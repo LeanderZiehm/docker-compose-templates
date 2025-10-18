@@ -4,7 +4,7 @@ services:
     restart: unless-stopped
     env_file: .env
     ports:
-      - 1412:1411
+      - 1411:1411
     volumes:
       - "./data:/app/data"
     # Optional healthcheck
