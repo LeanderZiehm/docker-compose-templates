@@ -3,3 +3,5 @@ http:
   trusted_proxies:
     - 127.0.0.1
     - ::1
+mobile_app:
+default_config:
