@@ -5,9 +5,9 @@ services:
     container_name: homeassistant
     image: ghcr.io/home-assistant/home-assistant:stable
     volumes:
-      - ~/homeassistant_config:/config   # persistent config folder
-      - /etc/localtime:/etc/localtime:ro
-      - /run/dbus:/run/dbus:ro
+      - ./homeassistant_config:/config       # mounts your config folder
+      - /etc/localtime:/etc/localtime:ro    # keep container time in sync
+      - /run/dbus:/run/dbus:ro              # optional, needed for some integrations
     restart: unless-stopped
     privileged: true
     network_mode: host
