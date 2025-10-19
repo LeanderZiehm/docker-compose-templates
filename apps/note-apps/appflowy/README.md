@@ -1,0 +1,1 @@
+https://appflowy.com/docs/Local-Host-Deployment
