@@ -3,7 +3,7 @@ services:
     container_name: homeassistant
     image: "ghcr.io/home-assistant/home-assistant:stable"
     volumes:
-      - /configuration.yaml:/config
+      - ~/homeassistant_config:/config   # now /config is a real folder
       - /etc/localtime:/etc/localtime:ro
       - /run/dbus:/run/dbus:ro
     restart: unless-stopped
