@@ -21,7 +21,7 @@ providers:
     endpoint: "unix:///var/run/docker.sock"
     exposedByDefault: false
 
-certificateResolvers:
+certificatesResolvers:
   cloudflare:
     acme:
       email: leanderziehm@gmail.com
