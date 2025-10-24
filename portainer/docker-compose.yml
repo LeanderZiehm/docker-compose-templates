@@ -3,7 +3,8 @@ services:
     image: portainer/portainer-ce:latest
     ports:
       - "9443:9443"
-      - "8001:8000"
+      - "9000:9000"
+      - "8000:8000"
     networks:
       - traefik_network
     volumes:
