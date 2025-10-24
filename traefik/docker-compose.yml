@@ -2,10 +2,6 @@ services:
   traefik:
     image: traefik:v3.5
     container_name: traefik
-    command:
-      - "--api.insecure=true"
-      - "--providers.docker=true"
-      - "--entrypoints.web.address=:80"
     ports:
       - "80:80"
       - "443:443"
@@ -14,8 +10,8 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./config/traefik.yaml:/etc/traefik/traefik.yaml:ro
     networks:
-      - traefik
+      - frontend
     restart: unless-stopped
 networks:
-  traefik:
+  frontend:
     external: true
