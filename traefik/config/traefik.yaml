@@ -14,3 +14,17 @@ entryPoints:
 providers:
   docker:
     endpoint: "unix:///var/run/docker.sock"
+    exposedByDefault: false
+
+certificateResolvers:
+  cloudflare:
+    acme:
+      email: leanderziehm@gmail.com
+      storage: /var/traefik/certs/cloudflare-acme.json
+      caServer: `https://acme-v02.api.letsencrypt.org/directory`
+      keyType: EC256
+      dnsChallenge:
+        provider: cloudflare
+        resolvers:
+          - '1.1.1.1:53'
+          - '0.0.0.0:53'
