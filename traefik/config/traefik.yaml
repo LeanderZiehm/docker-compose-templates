@@ -26,7 +26,7 @@ certificateResolvers:
     acme:
       email: leanderziehm@gmail.com
       storage: /var/traefik/certs/cloudflare-acme.json
-      caServer: `https://acme-v02.api.letsencrypt.org/directory`
+      caServer: 'https://acme-v02.api.letsencrypt.org/directory'
       keyType: EC256
       dnsChallenge:
         provider: cloudflare
