@@ -11,8 +11,10 @@ services:
     restart: unless-stopped
     labels:
       - traefik.enable=true
-      - traefik.http.routers.nginx-http.rule=Host(`portainer.leanderziehm.com`)
-      - traefik.http.routers.nginx-http.entrypoints=web
+      - traefik.http.routers.portainer.tls=true
+      - traefik.http.routers.portainer.tls.certresolver=cloudflare
+      - traefik.http.routers.portainer.entrypoints=websecure
+      - traefik.http.routers.portainer.rule=Host(`portainer.leanderziehm.com`)
     restart: unless-stopped
 volumes:
   portainer_data:
