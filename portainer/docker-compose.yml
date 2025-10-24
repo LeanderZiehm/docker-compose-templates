@@ -3,10 +3,20 @@ services:
     image: portainer/portainer-ce:latest
     ports:
       - "9443:9443"
+    networks:
+      - traefik_network
     volumes:
       - portainer_data:/data
       - /var/run/docker.sock:/var/run/docker.sock
     restart: unless-stopped
-
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.nginx-http.rule=Host(`portainer.leanderziehm.com`)
+      - traefik.http.routers.nginx-http.entrypoints=web
+    restart: unless-stopped
 volumes:
   portainer_data:
+
+networks:
+  traefik_network:
+    external: true
