@@ -1,3 +1,4 @@
+# Todo .env
 services:
   umami:
     image: ghcr.io/umami-software/umami:postgresql-latest
