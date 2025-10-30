@@ -1,0 +1,25 @@
+http:
+  routers:
+    umami:
+      rule: "Host(`umami.leanderziehm.com`)"
+      entryPoints: [http]
+      middlewares: [umami-https-redirect]
+      service: umami
+
+    umami-secure:
+      rule: "Host(`umami.leanderziehm.com`)"
+      entryPoints: [https]
+      tls:
+        certResolver: cloudflare
+      service: umami
+
+  middlewares:
+    umami-https-redirect:
+      redirectScheme:
+        scheme: https
+
+  services:
+    umami:
+      loadBalancer:
+        servers:
+          - url: "http://umami:3000"

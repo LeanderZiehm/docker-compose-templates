@@ -9,3 +9,9 @@ services:
       APP_SECRET: replace-me-with-a-random-string
     init: true
     restart: always
+    networks:
+      - proxy
+
+networks:
+  proxy:
+    external: true
