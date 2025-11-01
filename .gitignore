@@ -1,4 +1,4 @@
 .env
-old/
+hidden/
 *acme.json
 */homeassistant_config/.storage
