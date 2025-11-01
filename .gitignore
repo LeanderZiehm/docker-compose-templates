@@ -2,3 +2,4 @@
 hidden/
 *acme.json
 */homeassistant_config/.storage
+nginx/notes.md
