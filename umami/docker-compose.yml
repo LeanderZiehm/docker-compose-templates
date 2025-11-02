@@ -11,8 +11,6 @@ services:
       APP_SECRET: ${APP_SECRET} #replace-me-with-a-random-string
     init: true
     restart: always
-    networks:
-    - postgres
     network_mode: "bridge"  
 #networks:
  # - postgres_net
