@@ -11,5 +11,4 @@ services:
       APP_SECRET: ${APP_SECRET} #replace-me-with-a-random-string
     init: true
     restart: always
-    networks:
-      - host
+    network_mode: "host"  
