@@ -7,7 +7,7 @@ services:
     # else find the right id with the id -u command
     user: '0'
     ports:
-      - '3000:3000'
+      - '3322:3000'
     # adding the mount volume point which we create earlier
     volumes:
       - './data:/var/lib/grafana'
