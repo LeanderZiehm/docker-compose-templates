@@ -15,4 +15,4 @@ services:
     ports:
       - 5678:5678
     volumes:
-      - n8n_storage:/home/user/n8n
+      - n8n_storage:/home/docker/n8n

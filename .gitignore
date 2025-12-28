@@ -5,5 +5,4 @@ hidden/
 nginx/notes.md
 
 volumes/
-n8n/.env.justn8n
-n8n/.env.original
+others/n8n-all-in-one/.env.original
