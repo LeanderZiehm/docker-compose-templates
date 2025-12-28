@@ -6,9 +6,9 @@ services:
       - '3000:3000'
     env_file: .env
     environment:
-      DATABASE_URL: ${DATABASE_URL} #postgresql://umami:umami@db:5432/umami
-      DATABASE_TYPE: ${DATABASE_TYPE} # postgresql
-      APP_SECRET: ${APP_SECRET} #replace-me-with-a-random-string
+      DATABASE_TYPE: postgresql
+      DATABASE_URL: ${DATABASE_URL}
+      APP_SECRET: ${APP_SECRET} 
     init: true
     restart: always
     network_mode: "host"  
