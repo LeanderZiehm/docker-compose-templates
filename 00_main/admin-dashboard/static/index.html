@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin Dashboard Links</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #020617;
+      --border: #1e293b;
+      --text: #e5e7eb;
+      --muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-hover: #0ea5e9;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: radial-gradient(circle at top, #020617, #020617 40%, #000);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 2rem;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p.subtitle {
+      color: var(--muted);
+      margin-bottom: 2rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .card {
+      background: linear-gradient(180deg, #020617, #020617);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem;
+      transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+      box-shadow: 0 10px 30px rgba(56, 189, 248, 0.15);
+    }
+
+    .card h2 {
+      font-size: 1.1rem;
+      margin: 0 0 0.5rem;
+    }
+
+    .url {
+      font-size: 0.85rem;
+      color: var(--muted);
+      word-break: break-all;
+      margin-bottom: 1rem;
+    }
+
+    .actions {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .btn {
+      flex: 1;
+      text-align: center;
+      padding: 0.5rem 0.75rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      border: 1px solid var(--border);
+      color: var(--text);
+      background: #020617;
+      transition: background 0.15s ease, border-color 0.15s ease;
+      cursor: pointer;
+    }
+
+    .btn.primary {
+      border-color: var(--accent);
+      color: #020617;
+      background: var(--accent);
+    }
+
+    .btn.primary:hover {
+      background: var(--accent-hover);
+    }
+
+    .btn.secondary:hover {
+      border-color: var(--accent);
+    }
+
+    footer {
+      margin-top: 3rem;
+      color: var(--muted);
+      font-size: 0.8rem;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Admin Link Collection</h1>
+  <p class="subtitle">Quick access to local observability & admin services</p>
+
+  <div id="linkGrid" class="grid"></div>
+
+  <footer>
+    Self-contained dashboard · Edit links in JS
+  </footer>
+
+  <script>
+    // === EDIT YOUR LINKS HERE ===
+    const links = [
+      {
+        name: "Grafana",
+        url: "http://localhost:3322/d/rYdddlPWk/node-exporter-full"
+      },
+      {
+        name: "Prometheus",
+        url: "http://localhost:9090"
+      }
+    ];
+
+    const grid = document.getElementById("linkGrid");
+
+    function renderLinks() {
+      grid.innerHTML = "";
+
+      links.forEach(({ name, url }) => {
+        const card = document.createElement("div");
+        card.className = "card";
+
+        card.innerHTML = `
+          <h2>${name}</h2>
+          <div class="url">${url}</div>
+          <div class="actions">
+            <a class="btn primary" href="${url}" target="_blank" rel="noopener">
+              Open
+            </a>
+            <button class="btn secondary" onclick="navigator.clipboard.writeText('${url}')">
+              Copy URL
+            </button>
+          </div>
+        `;
+
+        grid.appendChild(card);
+      });
+    }
+
+    renderLinks();
+  </script>
+</body>
+</html>
