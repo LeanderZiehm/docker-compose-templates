@@ -1,6 +1,13 @@
 1 run_podman:
 	podman compose up
 
+
+2 run_podman:
+	podman compose -f prom-compose.yml up
+
+3 run_podman:
+	podman compose -f prom-compose2.yml up
+
 # podman compose -f podman-compose.yml up
 
 run_docker:
