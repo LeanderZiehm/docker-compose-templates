@@ -1,10 +1,12 @@
-run_podman:
-	podman compose -f podman-compose.yml up
+1 run_podman:
+	podman compose up
+
+# podman compose -f podman-compose.yml up
 
 run_docker:
 	docker compose up -d
 
-env:
+0 env:
 	bash ./create_env.sh
 
 

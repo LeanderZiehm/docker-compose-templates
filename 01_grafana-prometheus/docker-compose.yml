@@ -29,34 +29,6 @@ services:
       - ./prometheus:/etc/prometheus
       - prom_data:/prometheus
 
-  node_exporter:
-    image: quay.io/prometheus/node-exporter:latest
-    container_name: node_exporter
-    command:
-      - '--path.rootfs=/host'
-    pid: host
-    ports:
-      - "9100:9100"
-    restart: unless-stopped
-    volumes:
-      - '/:/host:ro,rslave'
-
-
-  cadvisor:
-    image: ghcr.io/google/cadvisor:v0.53.0
-    container_name: cadvisor
-    privileged: true
-    devices:
-      - /dev/kmsg
-    ports:
-      - "8080:8080"
-    volumes:
-      - /:/rootfs:ro
-      - /var/run:/var/run:ro
-      - /sys:/sys:ro
-      - /var/lib/docker:/var/lib/docker:ro
-      - /dev/disk:/dev/disk:ro
-    restart: unless-stopped
 
 volumes:
   prom_data:
