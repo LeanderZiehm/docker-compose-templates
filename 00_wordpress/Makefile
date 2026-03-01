@@ -1,5 +1,5 @@
 run_podman:
-	podman compose up -d
+	podman compose up
 
 run_docker:
 	docker compose up -d
