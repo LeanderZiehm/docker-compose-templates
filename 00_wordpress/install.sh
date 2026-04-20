@@ -9,20 +9,22 @@ echo "==> Creating install directory: $APP_DIR"
 mkdir -p "$APP_DIR"
 cd "$APP_DIR"
 
-echo "==> Downloading docker-compose.yml"
-curl -fsSL "$REPO_RAW_BASE/docker-compose.yml" -o docker-compose.yml
+echo "==> Downloading compose + env scripts"
 
-echo "==> Downloading .env.example"
-curl -fsSL "$REPO_RAW_BASE/.env.example" -o .env.example
+curl -fsSL "$REPO_RAW_BASE/docker-compose.yml" -o docker-compose.yml
+curl -fsSL "$REPO_RAW_BASE/create_env.sh" -o create_env.sh
+
+chmod +x create_env.sh
+
+echo "==> Generating .env using create_env.sh"
 
 if [ ! -f .env ]; then
-  echo "==> Creating .env from template"
-  cp .env.example .env
+  ./create_env.sh
 else
-  echo "==> .env already exists, skipping"
+  echo "==> .env already exists, skipping generation"
 fi
 
-echo "==> Detecting Docker / Podman Compose"
+echo "==> Detecting Compose runtime"
 
 if docker compose version >/dev/null 2>&1; then
   COMPOSE_CMD="docker compose"
@@ -35,17 +37,17 @@ fi
 
 echo "==> Using: $COMPOSE_CMD"
 
-echo "==> Starting stack"
+echo "==> Starting WordPress stack"
 $COMPOSE_CMD up -d
 
 echo ""
 echo "==============================="
-echo " WordPress stack is running"
+echo " WordPress stack installed"
 echo " Directory: $APP_DIR"
 echo "==============================="
 echo ""
-echo "To stop:"
+echo "Stop:"
 echo "  cd $APP_DIR && $COMPOSE_CMD down"
 echo ""
-echo "To view logs:"
+echo "Logs:"
 echo "  cd $APP_DIR && $COMPOSE_CMD logs -f"
