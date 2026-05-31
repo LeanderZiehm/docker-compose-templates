@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-REPO_RAW_BASE="https://raw.githubusercontent.com/LeanderZiehm/docker-compose-templates/main/00_wordpress"
+REPO_RAW_BASE="https://raw.githubusercontent.com/LeanderZiehm/docker-compose-templates/main/03_wordpress"
 
 APP_DIR="${APP_DIR:-$HOME/wordpress-stack}"
 
