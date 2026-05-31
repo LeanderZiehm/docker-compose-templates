@@ -2,10 +2,13 @@
 set -euo pipefail
 # usage install.sh 04_umami
 
+argument_count=$#
+
 if [ "$argument_count" -ne 1 ]; then
     echo "please pass 1 and just 1 input after this file"
 else
     echo "selected: $1"
+    exit 1
 fi
 
 FOLDER=$1
@@ -43,6 +46,15 @@ else
   echo "ERROR: Neither docker compose nor podman compose found."
   exit 1
 fi
+
+echo "Do you wish to run this command?  $COMPOSE_CMD"
+select yn in "Yes" "No"; do
+    case $yn in
+        Yes ) echo "you said yes"; break;;
+        No ) exit;;
+    esac
+done
+
 
 echo "==> Using: $COMPOSE_CMD"
 
