@@ -8,11 +8,11 @@ else
     echo "selected: $1"
 fi
 
-FOLDER = $1
+FOLDER=$1
 
-REPO_URL_PREFIX = "https://raw.githubusercontent.com/LeanderZiehm/docker-compose-templates/main"
+REPO_URL_PREFIX="https://raw.githubusercontent.com/LeanderZiehm/docker-compose-templates/main"
 
-REPO_FOLDER_URL = "$REPO_URL_PREFIX/$FOLDER"
+REPO_FOLDER_URL="$REPO_URL_PREFIX/$FOLDER"
 
 echo "==> Creating install directory: $FOLDER"
 mkdir -p "$FOLDER"
