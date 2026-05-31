@@ -1,7 +1,7 @@
 # Todo .env
 services:
   umami:
-    image: ghcr.io/umami-software/umami:postgresql-v2.20.2
+    image: ghcr.io/umami-software/umami:3.1
     ports:
       - '3001:3000'
     env_file: .env
